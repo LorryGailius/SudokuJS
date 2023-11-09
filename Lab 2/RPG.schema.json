@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "game": {
+      "type": "object",
+      "properties": {
+        "players": {
+          "$ref": "#/definitions/playerList"
+        },
+        "enemies": {
+          "$ref": "#/definitions/enemieList"
+        }
+      },
+      "required": ["players", "enemies"]
+    }
+  },
+  "definitions": {
+    "playerList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/player"
+      }
+    },
+    "player": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "class": { "type": "string" },
+        "birthday": { "type": "string", "format": "date" },
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/item" }
+        },
+        "health": { "type": "integer", "minimum": 0 },
+        "damage": { "type": "integer", "minimum": 0 },
+        "login": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "facebook": {
+                  "type": "string",
+                  "pattern": "[a-zA-Z0-9_]{0,15}"
+                }
+              },
+              "required": ["facebook"]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "gmailAddress": {
+                  "type": "string",
+                  "pattern": "[a-zA-Z0-9_]+@gmail.com"
+                }
+              },
+              "required": ["gmailAddress"]
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "class",
+        "birthday",
+        "items",
+        "health",
+        "damage",
+        "login"
+      ]
+    },
+    "item": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "anyOf": [{ "type": "string", "enum": ["weapon", "consumable"] }]
+        },
+        "amount": { "type": "integer", "minimum": 0 },
+        "name": { "type": "string" },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "stat": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "value": { "type": "number" }
+                },
+                "required": ["name", "value"]
+              }
+            }
+          }
+        }
+      },
+      "required": ["type", "amount", "name", "stats"]
+    },
+    "enemieList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/enemy"
+      }
+    },
+    "enemy": {
+      "type": "object",
+      "properties": {
+        "race": { "type": "string" },
+        "health": { "type": "integer", "minimum": 0 },
+        "damage": { "type": "integer", "minimum": 0 },
+        "target": { "type": "string" }
+      },
+      "required": ["race", "health", "damage", "target"]
+    }
+  }
+}

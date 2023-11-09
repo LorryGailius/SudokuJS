@@ -1,0 +1,80 @@
+{
+  "game": {
+    "players": [
+      {
+        "name": "Player 1",
+        "class": "Warrior",
+        "birthday": "1990-05-15",
+        "items": [
+          {
+            "type": "weapon",
+            "amount": 1,
+            "name": "Sword",
+            "stats": {
+              "stat": [
+                { "name": "damage", "value": 10 },
+                { "name": "accuracy", "value": 85 }
+              ]
+            }
+          },
+          {
+            "type": "consumable",
+            "amount": 5,
+            "name": "Health Potion",
+            "stats": {
+              "stat": [{ "name": "healing", "value": 30 }]
+            }
+          }
+        ],
+        "health": 100,
+        "damage": 20,
+        "login": {
+          "facebook": "player1_fb"
+        }
+      },
+      {
+        "name": "Player 2",
+        "class": "Mage",
+        "birthday": "1992-09-22",
+        "items": [
+          {
+            "type": "weapon",
+            "amount": 1,
+            "name": "Staff",
+            "stats": {
+              "stat": [
+                { "name": "damage", "value": 8 },
+                { "name": "spellpower", "value": 60 }
+              ]
+            }
+          },
+          {
+            "type": "consumable",
+            "amount": 3,
+            "name": "Mana Elixir",
+            "stats": {
+              "stat": [{ "name": "mana restoration", "value": 50 }]
+            }
+          }
+        ],
+        "health": 80,
+        "damage": 25,
+        "login": {
+          "gmailAddress": "player2@gmail.com"
+        }
+      }
+    ],
+    "enemies": [
+      {
+        "race": "Orc",
+        "health": 150,
+        "damage": 30
+      },
+      {
+        "race": "Dragon",
+        "health": 500,
+        "damage": 80
+      }
+    ]
+  }
+}
