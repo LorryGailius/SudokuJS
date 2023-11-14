@@ -1,0 +1,76 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header,
+nav,
+section,
+article,
+footer {
+    margin: 10px;
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+nav>ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 2rem;
+}
+
+/* Media Query for Responsive Design */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+/* Descendant Selector Example */
+article p {
+    color: #333;
+}
+
+/* Child Selector Example */
+nav>ul {
+    list-style-type: none;
+}
+
+/* Attribute Selector Example */
+a[href^="#"] {
+    color: #333;
+    background-color: aqua;
+    border-radius: 4%;
+}
+
+/* Class Selector Example */
+.feedback-form {
+    background-color: #f4f4f4;
+}
+
+/* ID Selector Example */
+#reviews {
+    background-color: #e0e0e0;
+}
+
+/* Inheritance Example */
+h1,
+h2 {
+    color: inherit;
+}
+
+/* Cascade Mechanism Example */
+#about p {
+    color: blue !important;
+}

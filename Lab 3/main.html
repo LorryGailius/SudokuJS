@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Gaming Reviews</title>
+</head>
+<body>
+    <header>
+        <h1>Gaming Reviews</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#reviews">Game Reviews</a></li>
+            <li><a href="#gallery">Image Gallery</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    <section id="games">
+        <h2>Featured Games</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td rowspan="2">Game 1</td>
+                    <td>Action</td>
+                    <td>2022-01-01</td>
+                    <td rowspan="2">PC</td>
+                    <td rowspan="2"><img src="pc-icon.png" alt="PC"></td>
+                </tr>
+                <tr>
+                    <td>Adventure</td>
+                    <td>2022-02-15</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Game 2</td>
+                    <td>Sports</td>
+                    <td>2022-03-20</td>
+                    <td rowspan="2">PlayStation</td>
+                    <td rowspan="2"><img src="ps-icon.png" alt="PlayStation"></td>
+                </tr>
+                <tr>
+                    <td>Racing</td>
+                    <td>2022-04-10</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Game 3</td>
+                    <td>Strategy</td>
+                    <td>2022-05-15</td>
+                    <td rowspan="2">Xbox</td>
+                    <td rowspan="2"><img src="xbox-icon.png" alt="Xbox"></td>
+                </tr>
+                <tr>
+                    <td>RPG</td>
+                    <td>2022-06-30</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="reviews">
+        <article>
+            <h2>Review: Game Title 1</h2>
+            <p>Summary of the game review...</p>
+        </article>
+
+        <article>
+            <h2>Review: Game Title 2</h2>
+            <p>Summary of the game review...</p>
+        </article>
+    </section>
+
+    <section id="gallery">
+        <h2>Image Gallery</h2>
+        <img src="game1.jpg" alt="Screenshot from Game 1">
+        <img src="game2.jpg" alt="Screenshot from Game 2">
+    </section>
+
+    <section id="feedback">
+        <h2>Feedback</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="rating">Rating:</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>This website is dedicated to providing honest and insightful reviews of various video games. Stay tuned for the latest updates!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Gaming Reviews</p>
+    </footer>
+</body>
+</html>
