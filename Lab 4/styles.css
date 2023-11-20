@@ -1,0 +1,90 @@
+:root {
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.JS {
+    background-color: #EFE051;
+    padding: 1rem 0.25rem 0rem 1rem;
+}
+
+#board {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: medium;
+    border-radius: 4px;
+    border: 2px solid black;
+
+    box-shadow: 2px 2px black;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.cell:hover {
+    transform: scale(1.1);
+}
+
+.input {
+    cursor: pointer;
+}
+
+.locked {
+    background-color: #ddd;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: medium;
+    border-radius: 4px;
+    border: 2px solid black;
+
+    box-shadow: 2px 2px black;
+}
