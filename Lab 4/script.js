@@ -15,7 +15,7 @@ $(document).ready(function () {
         var value = sudoku.board[i];
         var element =
           value == null
-            ? `<input id="${i}" class="input cell" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,''); " autocomplete="off">`
+            ? `<input id="${i}" class="input cell" type="text" maxlength="1" onfocus="setCursorEnd(this);" oninput="this.value=this.value.replace(/[^0-9]/g,'');" autocomplete="off">`
             : `<div id="${i}" class="locked cell no-select">${value}</div>`;
 
         $("#board").append(element);
@@ -32,7 +32,6 @@ $(document).ready(function () {
       });
 
       $("#check").click(function () {
-        console.log(sudoku.board);
         if (sudoku.board.some((x) => x == null)) {
           showToast("Please fill in all the cells.");
         } else {
@@ -93,4 +92,10 @@ function showToast(message) {
   setTimeout(() => {
     container.fadeOut();
   }, 4000);
+}
+
+function setCursorEnd(input) {
+  // Does not work on Brave(Chromium)
+  var length = input.value.length;
+  input.setSelectionRange(length, length);
 }
