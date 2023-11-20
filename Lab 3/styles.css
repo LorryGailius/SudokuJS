@@ -10,6 +10,15 @@ main {
     padding: 0;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+
+}
+
 header {
     text-align: center;
 }
@@ -18,17 +27,20 @@ ul {
     margin-right: 2rem;
 }
 
+/* Įpėdinio (descendant); */
 ul li {
     margin: 10px 0;
 }
 
+/* Klasės (class); */
 .container {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
 }
 
-[class ^=column] {
+/* Atributo (attribute); */
+[class ^=card] {
     background-color: var(--color-signal);
     display: flex;
     flex-direction: column;
@@ -36,7 +48,8 @@ ul li {
     box-shadow: .5rem .5rem 0 var(--color-dark);
 }
 
-.column>h2 {
+/* Vaiko (child); */
+.card>h2 {
     text-align: center;
     color: var(--color-dark);
 }
@@ -47,6 +60,7 @@ table {
     width: max-content;
 }
 
+/* ID */
 #GOTY {
     display: flex;
     flex-direction: column;
@@ -55,23 +69,26 @@ table {
     padding: 1rem;
 }
 
-.column img {
+.card img {
     width: 80%;
     align-self: center;
     border-radius: 4px;
-    box-shadow: inherit
+    box-shadow: inherit;
+    /* inherit */
 }
 
 #title {
     color: red;
 }
 
+/* !important */
 h1 {
     color: var(--color-dark) !important;
 }
 
+/* @media taisykle */
 @media screen and (min-width: 900px) {
-    [class ^=column] {
+    [class ^=card] {
         width: fit-content;
         height: fit-content;
         padding: 1rem;

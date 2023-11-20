@@ -12,8 +12,10 @@
     </header>
 
     <div class="container">
-      <div class="column">
+      <!-- Section -->
+      <section class="card">
         <h2>Reviews</h2>
+        <!-- Lentele -->
         <table>
           <thead>
             <tr>
@@ -27,6 +29,7 @@
             <tr>
               <td class="game-name">Assassin's Creed: Mirage</td>
               <td>8.5</td>
+              <!-- rowspan naudojama apjungti zaidimus tais paciais vertintojais -->
               <td rowspan="3">IGN</td>
               <td>2023-10-05</td>
             </tr>
@@ -41,6 +44,7 @@
               <td>2023-12-10</td>
             </tr>
             <tr>
+              <!-- Neisleistas zaidimas neturi ivertinimo del to colspan 3 uzpildyti tustiem duomenim -->
               <td colspan="3">Suicide Squad: Kill the Justice League</td>
               <td>2024-02-02</td>
             </tr>
@@ -73,15 +77,23 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </section>
 
-      <div class="column">
+      <div class="card">
         <h2>Vote for GOTY</h2>
 
+        <!-- Paveiksliukas -->
         <img
           src="https://img.asmedia.epimg.net/resizer/rqzBmo7wgVa22yol9l9gdrA0I0M=/360x203/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/VIN33NZ5GNB4PGZY7PGC5ALPDI.png"
         />
 
+        <p>
+          Vote for your favorite game of the year and get a chance to win a free
+          copy of the game!
+        </p>
+
+        <!-- Duomenų įvedimo forma, kurioje prasmingai panaudoti bent 5 skirtingų tipų įvedimo
+              laukai. Pademonstruoti privalomų laukų validaciją. -->
         <form method="post" id="GOTY">
           <label for="name">Your Name:</label>
           <input type="text" id="name" name="name" required />
@@ -94,6 +106,7 @@
 
           <label for="favoriteGame">Favorite Game:</label>
           <select id="favoriteGame" name="favoriteGame" required>
+            <!-- Sąrašo (pasirinkimo) komponentas -->
             <option value="">Select a game</option>
             <option value="Assassin's Creed: Mirage">
               Assassin's Creed: Mirage
@@ -110,9 +123,10 @@
           <button type="submit">Submit</button>
         </form>
       </div>
-      <div class="column">
+      <div class="card">
         <h2>Recent releases</h2>
 
+        <!-- Nuoroda i kita puslapi ir nenumeruotas sarasas-->
         <ul>
           <a href="https://www.ubisoft.com/en-gb/game/assassins-creed/mirage">
             <li>Assassin's Creed: Mirage</li>
