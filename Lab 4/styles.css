@@ -1,46 +1,70 @@
+@import url('https://api.fonts.coollabs.io/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+
 :root {
-    font-family: 'Inter', sans-serif;
+    --cell-size: 45px;
+
+    --color-background: #fefcfb;
+
+    --color-primary: #caf0f8;
+    --color-secondary: #5B8FB9;
+
+    --color-text: #0d1b2a;
+    --color-shadow: #0d1b2a;
+    --color-border: black;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 html {
+    background-color: var(--color-background);
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-.JS {
-    background-color: #EFE051;
-    padding: 1rem 0.25rem 0rem 1rem;
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+header {
+    font-size: xx-large;
+    color: var(--color-text);
 }
 
 #board {
     display: grid;
-    gap: 0.25rem;
+    gap: 2px;
 }
 
 .cell {
+    color: var(--color-text);
     display: flex;
     align-items: center;
     justify-content: center;
+    caret-color: transparent;
     margin: 0;
     padding: 0;
     outline: none;
     text-align: center;
-    font-weight: bold;
-    font-size: medium;
+    font-weight: 800;
+    font-size: x-large;
     border-radius: 4px;
-    border: 2px solid black;
-
-    box-shadow: 2px 2px black;
-
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-border);
     transition: all 0.2s ease-in-out;
 }
 
-.cell:hover {
-    transform: scale(1.1);
+.input:focus {
+    border: 2px solid var(--color-border);
+    box-shadow: 0 0 0 4px var(--color-shadow);
+    z-index: 1;
 }
 
 .input {
@@ -48,7 +72,8 @@ html {
 }
 
 .locked {
-    background-color: #ddd;
+    background-color: var(--color-secondary);
+    border: 2px solid var(--color-border);
 }
 
 .no-select {
@@ -84,7 +109,25 @@ button {
     font-weight: bold;
     font-size: medium;
     border-radius: 4px;
-    border: 2px solid black;
+    border: 2px solid var(--color-shadow);
+    padding: 0.5rem 1rem;
+    color: var(--color-text);
+    transition: all 0.2s ease-in-out;
+}
 
+button:hover {
     box-shadow: 2px 2px black;
+}
+
+#solve {
+    background-color: var(--color-secondary);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    color: var(--color-text);
+    width: 100%;
+    font-weight: bolder;
 }

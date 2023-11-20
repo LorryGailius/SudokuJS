@@ -7,15 +7,15 @@ $(document).ready(function () {
       sudoku = new Sudoku(data.width, data.height, data.board);
 
       $("#board").css({
-        "grid-template-columns": `repeat(${sudoku.width}, 45px)`,
-        "grid-template-rows": `repeat(${sudoku.height}, 45px)`,
+        "grid-template-columns": `repeat(${sudoku.width}, var(--cell-size))`,
+        "grid-template-rows": `repeat(${sudoku.height}, var(--cell-size))`,
       });
 
       for (let i = 0; i < sudoku.width * sudoku.height; ++i) {
         var value = sudoku.board[i];
         var element =
           value == null
-            ? `<input id="${i}" class="input cell" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');">`
+            ? `<input id="${i}" class="input cell" type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,''); " autocomplete="off">`
             : `<div id="${i}" class="locked cell no-select">${value}</div>`;
 
         $("#board").append(element);
@@ -23,6 +23,12 @@ $(document).ready(function () {
         $(`#${i}`).on("blur", function () {
           const value = $(this).val();
           sudoku.board[i] = value == "" ? null : parseInt(value);
+        });
+
+        //Move input cursor to the end of the input
+        $(`#${i}`).on("focus", function () {
+          var val = $(this).val();
+          $(this).val("").val(val);
         });
       }
 
@@ -64,10 +70,10 @@ $(document).ready(function () {
   });
 });
 
-function resetCells(sudoku) {
+function resetCells(sudoku, gaveUp = false) {
   for (let i = 0; i < sudoku.width * sudoku.height; ++i) {
     $(`#${i}`).val(sudoku.board[i] == null ? "" : sudoku.board[i]);
-    $(`#${i}`).attr("disabled", sudoku.board[i] != null);
+    $(`#${i}`).attr("disabled", gaveUp);
   }
 }
 
@@ -78,7 +84,7 @@ function solve() {
     dataType: "json",
     success: function (data) {
       sudoku.setBoard(data.solution);
-      resetCells(sudoku);
+      resetCells(sudoku, true);
     },
     error: function (_, status, error) {
       console.error("API error:", status, error);
