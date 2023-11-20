@@ -24,12 +24,6 @@ $(document).ready(function () {
           const value = $(this).val();
           sudoku.board[i] = value == "" ? null : parseInt(value);
         });
-
-        //Move input cursor to the end of the input
-        $(`#${i}`).on("focus", function () {
-          var val = $(this).val();
-          $(this).val("").val(val);
-        });
       }
 
       $("#reset").click(function () {
@@ -40,7 +34,7 @@ $(document).ready(function () {
       $("#check").click(function () {
         console.log(sudoku.board);
         if (sudoku.board.some((x) => x == null)) {
-          alert("Please fill in all the cells.");
+          showToast("Please fill in all the cells.");
         } else {
           let request = $.ajax({
             url: SUDOKU_SOLVE_URL,
@@ -48,9 +42,9 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
               if (data.solution == sudoku.board.join("")) {
-                alert("Correct!");
+                showToast("Correct ✔️");
               } else {
-                alert("Incorrect!");
+                showToast("Incorrect ❌");
               }
             },
             error: function (_, status, error) {
@@ -90,4 +84,13 @@ function solve() {
       console.error("API error:", status, error);
     },
   });
+}
+
+function showToast(message) {
+  $("#toast").text(message);
+  container = $(".toast-container");
+  container.fadeIn();
+  setTimeout(() => {
+    container.fadeOut();
+  }, 4000);
 }
