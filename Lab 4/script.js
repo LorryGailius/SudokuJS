@@ -36,7 +36,7 @@ $(document).ready(function () {
       $("#check").click(function () {
         if (sudoku.board.some((x) => x == null)) {
           // Turi būti patikrinta ar visi laukai yra užpildyti;
-          showToast("Please fill in all the cells.");
+          showToast("Please fill in all the cells");
         } else {
           let request = $.ajax({
             url: SUDOKU_SOLVE_URL,
