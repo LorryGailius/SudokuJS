@@ -37,11 +37,17 @@ body {
 header {
     font-size: xx-large;
     color: var(--color-text);
+    margin: 1rem;
+}
+
+h1 {
+    margin: 0;
 }
 
 #board {
     display: grid;
     gap: 0.1rem;
+    padding: 1rem;
 }
 
 .cell {
