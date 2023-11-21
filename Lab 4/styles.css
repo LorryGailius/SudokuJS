@@ -136,12 +136,19 @@ button:active {
 
 footer {
     position: absolute;
+    margin-bottom: 1rem;
     bottom: 0;
     text-align: center;
     color: var(--color-text);
     width: 100%;
     font-weight: bolder;
 }
+
+footer>p {
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
 .git-logo {
     width: 32px;
     height: 32px;
