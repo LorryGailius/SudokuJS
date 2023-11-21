@@ -132,6 +132,10 @@ footer {
     width: 100%;
     font-weight: bolder;
 }
+.git-logo {
+    width: 32px;
+    height: 32px;
+}
 
 .toast-container {
     display: none;
