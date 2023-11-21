@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // Komunikavimas su nutolusiu serveriu
   let request = $.ajax({
     url: SUDOKU_BOARD_URL,
     method: "GET",
@@ -16,8 +15,7 @@ $(document).ready(function () {
         var value = sudoku.board[i];
         var element =
           value == null
-            ? // Turi būti patikrinimas ar į laukus įvesti teigiami sveikieji skaičiai; Tikrinama per regexa po ivesties
-              `<input id="${i}" class="input cell" type="text" maxlength="1" onfocus="setCursorEnd(this);" oninput="this.value=this.value.replace(/[^0-9]/g,'');" autocomplete="off">`
+            ? `<input id="${i}" class="input cell" type="text" maxlength="1" onfocus="setCursorEnd(this);" oninput="this.value=this.value.replace(/[^0-9]/g,'');" autocomplete="off">`
             : `<div id="${i}" class="locked cell no-select">${value}</div>`;
 
         $("#board").append(element);
@@ -35,7 +33,6 @@ $(document).ready(function () {
 
       $("#check").click(function () {
         if (sudoku.board.some((x) => x == null)) {
-          // Turi būti patikrinta ar visi laukai yra užpildyti;
           showToast("Please fill in all the cells");
         } else {
           let request = $.ajax({
@@ -68,15 +65,12 @@ $(document).ready(function () {
 
 function resetCells(sudoku, gaveUp = false) {
   for (let i = 0; i < sudoku.width * sudoku.height; ++i) {
-    // Egzistuojančių HTML dokumento žymių tekstinio turinio pakeitimas
     $(`#${i}`).val(sudoku.board[i] == null ? "" : sudoku.board[i]);
-    // Egzistuojančių žymių stiliaus pakeitimas
     $(`#${i}`).attr("disabled", gaveUp);
   }
 }
 
 function solve() {
-  // Komunikavimas su nutolusiu serveriu
   let request = $.ajax({
     url: SUDOKU_SOLVE_URL,
     method: "GET",
@@ -92,10 +86,8 @@ function solve() {
 }
 
 function showToast(message) {
-  // Egzistuojančių HTML dokumento žymių tekstinio turinio pakeitimas
   $("#toast").text(message);
 
-  // HTML puslapio elementų paslėpimas/parodymas
   container = $(".toast-container");
   container.fadeIn();
   setTimeout(() => {
