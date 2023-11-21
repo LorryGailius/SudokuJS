@@ -46,7 +46,7 @@ h1 {
 
 #board {
     display: grid;
-    gap: 0.1rem;
+    gap: 2px;
     padding: 1rem;
 }
 
