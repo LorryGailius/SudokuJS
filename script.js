@@ -2,9 +2,10 @@ $(document).ready(function () {
   let request = $.ajax({
     url: SUDOKU_BOARD_URL,
     method: "GET",
-    dataType: "json",
     success: function (data) {
-      sudoku = new Sudoku(data.width, data.height, data.board);
+      const newBoard = data.newboard.grids[0].value;
+      const solution = data.newboard.grids[0].solution;
+      sudoku = new Sudoku(9, 9, newBoard, solution);
 
       $("#board").css({
         "grid-template-columns": `repeat(${sudoku.width}, var(--cell-size))`,
@@ -15,7 +16,7 @@ $(document).ready(function () {
         var value = sudoku.board[i];
         var element =
           value == null
-            ? `<input id="${i}" class="input cell" type="text" maxlength="1" onfocus="setCursorEnd(this);" oninput="this.value=this.value.replace(/[^0-9]/g,'');" autocomplete="off">`
+            ? `<input id="${i}" class="input cell" type="number" maxlength="1" onfocus="setCursorEnd(this);" oninput="this.value=this.value.replace(/[^0-9]/g,'');" autocomplete="off">`
             : `<div id="${i}" class="locked cell no-select">${value}</div>`;
 
         $("#board").append(element);
@@ -35,21 +36,11 @@ $(document).ready(function () {
         if (sudoku.board.some((x) => x == null)) {
           showToast("Please fill in all the cells");
         } else {
-          let request = $.ajax({
-            url: SUDOKU_SOLVE_URL,
-            method: "GET",
-            dataType: "json",
-            success: function (data) {
-              if (data.solution == sudoku.board.join("")) {
-                showToast("Correct ✔️");
-              } else {
-                showToast("Incorrect ❌");
-              }
-            },
-            error: function (_, status, error) {
-              console.error("API error:", status, error);
-            },
-          });
+          if (sudoku.validSudoku()) {
+            showToast("Correct ✔️");
+          } else {
+            showToast("Incorrect ❌");
+          }
         }
       });
 
@@ -66,23 +57,12 @@ $(document).ready(function () {
 function resetCells(sudoku, gaveUp = false) {
   for (let i = 0; i < sudoku.width * sudoku.height; ++i) {
     $(`#${i}`).val(sudoku.board[i] == null ? "" : sudoku.board[i]);
-    $(`#${i}`).attr("disabled", gaveUp);
   }
 }
 
 function solve() {
-  let request = $.ajax({
-    url: SUDOKU_SOLVE_URL,
-    method: "GET",
-    dataType: "json",
-    success: function (data) {
-      sudoku.setBoard(data.solution);
-      resetCells(sudoku, true);
-    },
-    error: function (_, status, error) {
-      console.error("API error:", status, error);
-    },
-  });
+  sudoku.setBoard(sudoku.solution);
+  resetCells(sudoku, true);
 }
 
 function showToast(message) {
