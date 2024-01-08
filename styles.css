@@ -173,3 +173,26 @@ footer>p {
     border-radius: 12px;
     color: var(--color-background);
 }
+
+/* Screen width less than 640px */
+@media screen and (max-width: 640px) {
+    :root {
+        --cell-size: 40px;
+    }
+
+    .cell {
+        font-size: large;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    button {
+        font-size: small;
+    }
+
+    .toast-container {
+        padding: 0 1rem;
+    }
+}

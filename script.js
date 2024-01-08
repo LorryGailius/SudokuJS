@@ -16,7 +16,7 @@ $(document).ready(function () {
         var value = sudoku.board[i];
         var element =
           value == null
-            ? `<input id="${i}" class="input cell" type="text" maxlength="1" onfocus="setCursorEnd(this);" oninput="this.value=this.value.replace(/[^0-9]/g,'');" autocomplete="off">`
+            ? `<input id="${i}" class="input cell" type="number" maxlength="1" onfocus="setCursorEnd(this);" oninput="this.value=this.value.replace(/[^0-9]/g,'');" autocomplete="off">`
             : `<div id="${i}" class="locked cell no-select">${value}</div>`;
 
         $("#board").append(element);
